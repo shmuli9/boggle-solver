@@ -5,13 +5,13 @@ import (
 )
 
 type WordTree struct {
-	children  map[string]WTNode
+	children  NodeMap
 	voidNodes []WTNode
 	voidWords []WTNode
 }
 
 func NewWordTree() WordTree {
-	return WordTree{children: map[string]WTNode{}, voidNodes: []WTNode{}, voidWords: []WTNode{}}
+	return WordTree{children: NodeMap{}, voidNodes: []WTNode{}, voidWords: []WTNode{}}
 }
 
 func (tree WordTree) Add(word string) {
@@ -19,7 +19,7 @@ func (tree WordTree) Add(word string) {
 
 	if length >= 3 {
 		children := tree.children
-		var node WTNode
+		var node *WTNode
 		letterIndex := 0
 
 		for letterIndex < length {
