@@ -48,8 +48,36 @@ func (tree WordTree) Add(word string) {
 	}
 }
 
-func (tree WordTree) Find(word string) {
+func (tree WordTree) Find(word string) bool {
+	length := len(word)
 
+	if length >= 3 {
+		children := tree.children
+		var node *WTNode
+		letterIndex := 0
+
+		for letterIndex < length {
+			letter := strings.ToUpper(string(word[letterIndex]))
+
+			if letter == "Q" {
+				letter = "QU"
+				letterIndex += 1
+			}
+
+			letterIndex += 1
+
+			if _, exists := children[letter]; !exists {
+				return false
+			}
+
+			node = children[letter]
+			children = node.children
+		}
+
+		return node.isWord
+	}
+
+	return true
 }
 
 func (tree WordTree) ResetTree() {

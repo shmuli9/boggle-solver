@@ -7,8 +7,16 @@ import (
 
 func main() {
 	t := wordtree.NewWordTree()
-	t.Add("test")
-	t.Add("testing")
-	t.Add("tertiary")
+	testWords := []string{"test", "testing", "tertiary"}
+
+	for _, word := range testWords {
+		t.Add(word)
+	}
+
+	for _, word := range testWords {
+		found := t.Find(word)
+		log.Print(found, " ", word)
+	}
+
 	log.Print(t)
 }
