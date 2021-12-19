@@ -14,6 +14,10 @@ func NewWordTree() WordTree {
 	return WordTree{children: NodeMap{}, voidNodes: []WTNode{}, voidWords: []WTNode{}}
 }
 
+func (tree WordTree) String() string {
+	return "WordTree[" + tree.children.String() + "]"
+}
+
 func (tree WordTree) Add(word string) {
 	length := len(word)
 

@@ -11,6 +11,6 @@ func main() {
 	t := wordtree.NewWordTree()
 	t.Add("test")
 	t.Add("testing")
-	//t.Add("tertiary")
+	t.Add("tertiary")
 	log.Print(t)
 }
